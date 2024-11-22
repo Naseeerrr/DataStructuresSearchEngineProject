@@ -10,11 +10,11 @@ class BSTNode2<T>{
     }
   
   }
-  public class BST_int<T> {
+  public class BSTInt<T> {
   private BSTNode2<T> root;
   private BSTNode2<T> current;
   
-  public BST_int() {
+  public BSTInt() {
     current=root=null;
   }
   
@@ -68,12 +68,15 @@ class BSTNode2<T>{
   
       }
   
-  public void display_decreasing(BSTNode2 p) { 
-    if(p==null) return;
-    decrease(p.right);
-    System.out.println(p.data);
-    System.out.println("       "+p.key);
-      decrease(p.left);
+  public void display_decreasing() { 
+    
+    if (root==null) {
+      System.out.println("Tree is empty");
+    }
+    else{
+      System.out.println("DocumentID     Score");
+      decrease(root);
+    }
   
   }
   
