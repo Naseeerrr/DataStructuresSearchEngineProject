@@ -47,10 +47,7 @@ public class Index {  // LinkedList of LinkedList --> of type Document---> consi
         }
 	    return result;
 	}
-
-		
-		
-
+	
 	public void display_document() {
 		
 		if(All.empty()) {
@@ -73,7 +70,6 @@ public class Index {  // LinkedList of LinkedList --> of type Document---> consi
 		doc.word.display();;
 		System.out.println("<----------------------------------------------------->");
 		System.out.println("End of the Document");
-		
-	}
+		}
 
 }
