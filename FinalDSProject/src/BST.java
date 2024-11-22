@@ -73,7 +73,6 @@ public class BST<T> {
     }
     
     
-    
     public void inOrder() { // to print BSt in order
         if (root==null)
             System.out.println("Empty tree");
@@ -89,36 +88,6 @@ public class BST<T> {
         System.out.println("words: "+p.data);
         //((Words)p.data).display();// change to linked list (cast) after test!!!
         inOrder(p.right); // for right
-        
-        
-    
-        
-    
-        
-    }
-    public static void main(String[] args) {
-            BST<Double> bt = new BST<Double>();
-            
-            System.out.println("is empty? : "+ bt.empty());
-            bt.insert("A", 43.0);
-            bt.insert("A", 44.7);
-            bt.insert("D", 455.0);
-            bt.insert("L", 876.7);
-            bt.insert("J", 6.0);
-            bt.insert("B", 9.0);
-            bt.insert("z", 0.0);
-            bt.insert("y", 11.0);
-            bt.inOrder();
-            
-    
-    
-            
-        }
-             
-             
-             
-             
-             
-             
+        }          
 }  
     
