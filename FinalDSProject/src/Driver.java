@@ -211,16 +211,16 @@ public static void test() {
                 do {
                     methodChoice = scanner.nextInt();
                     if (methodChoice == 1) {
-                        QueryProcessing_index process = new QueryProcessing_index(Driver.indexs);
-                        LinkedList<Integer> queryResults = QueryProcessing_index.MixedQuery(query);
+                        QueryProcessingIndex process = new QueryProcessingIndex(Driver.indexs);
+                        LinkedList<Integer> queryResults = QueryProcessingIndex.MixedQuery(query);
                         driver.display_doc(queryResults);
                     } else if (methodChoice == 2) {
                         QueryProcessing process = new QueryProcessing(driver.inverted);
                         LinkedList<Integer> queryResults = QueryProcessing.MixedQuery(query);
                         driver.display_doc(queryResults);
                     } else if (methodChoice == 3) {
-                        QueryProcessing_BST process = new QueryProcessing_BST(driver.invertedBST);
-                        LinkedList<Integer> queryResults = QueryProcessing_BST.MixedQuery(query);
+                        QueryProcessingBST process = new QueryProcessingBST(driver.invertedBST);
+                        LinkedList<Integer> queryResults = QueryProcessingBST.MixedQuery(query);
                         driver.display_doc(queryResults);
                     } else if (methodChoice != 4) {
                         System.out.println("Invalid choice. Try again.");
