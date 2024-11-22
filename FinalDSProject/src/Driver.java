@@ -59,14 +59,12 @@ public void Load_doc(String fileN) {
   }
 }
 
-
-
  public LinkedList<String> LL_index_inverted(String content,int id){
    LinkedList<String>WordsDoc= new LinkedList<String>();
    do_index_inverted(content,WordsDoc,id);
    return WordsDoc;
-
  }
+	
 public  void do_index_inverted(String content,LinkedList<String> WordsDoc,int id) {
 	
 	content=content.replaceAll("\'", " ");
@@ -77,7 +75,6 @@ public  void do_index_inverted(String content,LinkedList<String> WordsDoc,int id
   tokens+= token.length ;// adding number of tokens
   
   for(String w: token) {
-	  
 	  if(!unique_words.exist(w)){// to insert non repetitive words
 		  unique_words.insert(w);
 		  num_unique++;}
@@ -87,14 +84,7 @@ public  void do_index_inverted(String content,LinkedList<String> WordsDoc,int id
       inverted.inverted_add(w, id);
       invertedBST.add(w, id);
     }
-  }
-  /*for(int i=0;i<token.length;i++) {
-    if(!check_stops(token[i])) {
-      WordsDoc.insert(token[i] );
-      inverted.inverted_add(token[i], id);
-    }
-  }*/
-  
+  }  
 }
 public boolean check_stops(String W) {
   if(stops==null||stops.empty())
@@ -126,8 +116,7 @@ public void display_doc (LinkedList<Integer> IDs){ // display Document by group 
 	while(!IDs.last()) {
 		Document d =indexs.get_doc(IDs.retrieve());
 		 if(d!=null) {// id found
-			 System.out.println("Document  "+ d.id + ": " +d.content);
-			 
+			 System.out.println("Document  "+ d.id + ": " +d.content);	 
 		 }
 		 IDs.findNext();
 	}
@@ -276,47 +265,14 @@ public static void test() {
     } while (userChoice != 10);
 }
 
-
-
-
 public static void main(String[] args) {
 		Driver d = new Driver ();
 		d.loadFiles("stop.txt","dataset.csv");
 			//d.indexs.display_document();
+	                //test:
 			System.out.println(" number of tokens =:" + d.tokens);
-			System.out.println(" number of unique words =:" + d.num_unique);
-
-	//d.inverted.inverted_display();
-		
-							/////INVERTED_INDEX
-//	QueryProcessing q= new QueryProcessing(d.inverted);
-//	LinkedList<Integer>  res=QueryProcessing.MixedQuery("MarketORshiftORenviroments") ;
-//	
-//	InvertedBST inv = new InvertedBST();
-//	inv.add_from_inverted_list(d.inverted);
-//	
-//	Ranking rank1= new Ranking(inv, d.indexs, "Market sports");
-//	rank1.insert_sorted_in_list();
-//	rank1.display_all_doc_with_score_usingList();
-	
-	//d.display_doc(res);
-		
-								//////// INDEX
-	QueryProcessingIndex ind= new QueryProcessingIndex(d.indexs);
-	LinkedList<Integer>  res1=QueryProcessingIndex.BooleanQuery("marketANDsports") ;
-
-	
-	
-		test();
-	
-		
-		
+			System.out.println(" number of unique words =:" + d.num_unique);		
 	}
-	
-	
-	
-	
-	
 }
 
 
