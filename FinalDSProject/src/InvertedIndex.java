@@ -9,8 +9,7 @@ public InvertedIndex() {
 
 public boolean inverted_search (String w) {
 		if(inverted_index.empty())
-			return false;
-		
+			return false;	
 		
 		inverted_index.findFirst();
 		while(!inverted_index.last()) {
@@ -36,9 +35,6 @@ public void inverted_add(String w,int id) {
 			inverted_index.insert(word);
 		}
 	}
-
-
-
 public boolean search_inverted(String word) {
     if (inverted_index == null || inverted_index.empty())
         return false;
@@ -57,11 +53,6 @@ public boolean search_inverted(String word) {
 
     return false;
 }
-
-	
-	
-	
-
 public void inverted_display() {
 	if(inverted_index.empty() || inverted_index == null) {
 		System.out.println("The inverted index is empty");
@@ -82,12 +73,7 @@ public void inverted_display() {
 	System.out.print("Doc ID:  " );
 	w.IDs.display();
 	System.out.println("----------------------------------------");
-	System.out.println("End of Words");
-
-	
-	
-	
-		
+	System.out.println("End of Words");	
 }
 
 }
