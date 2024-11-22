@@ -303,8 +303,8 @@ public static void main(String[] args) {
 	//d.display_doc(res);
 		
 								//////// INDEX
-	QueryProcessing_index ind= new QueryProcessing_index(d.indexs);
-	LinkedList<Integer>  res1=QueryProcessing_index.BooleanQuery("marketANDsports") ;
+	QueryProcessingIndex ind= new QueryProcessingIndex(d.indexs);
+	LinkedList<Integer>  res1=QueryProcessingIndex.BooleanQuery("marketANDsports") ;
 	d.display_doc(res1);
 
 	
