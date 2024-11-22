@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 public class Driver { // real work is here تنقية 
 	
 LinkedList<String> stops;
-Index indexs;
+static Index indexs;
 InvertedIndex inverted;
 InvertedBST invertedBST;
 int tokens=0; // number of words ,spaces....
