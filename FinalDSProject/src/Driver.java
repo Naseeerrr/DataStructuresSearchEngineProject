@@ -139,6 +139,142 @@ public void display_doc (LinkedList<Integer> IDs){ // display Document by group 
 	
 }
 
+public static void displayMenu() {
+    System.out.println("========= MENU =========");
+    System.out.println("1. Retrieve a Term:");
+    System.out.println("   - Using index with lists");
+    System.out.println("   - Using inverted index with lists");
+    System.out.println("   - Using inverted index with BST");
+    System.out.println("2. Perform Boolean Retrieval.");
+    System.out.println("3. Perform Ranked Retrieval.");
+    System.out.println("4. Display All Indexed Documents.");
+    System.out.println("5. Display Total Number of Documents in the Index.");
+    System.out.println("6. Show Total Number of Unique Words (Excluding Stop Words).");
+    System.out.println("7. Display Inverted Index (List of Lists).");
+    System.out.println("8. Display Inverted Index (BST).");
+    System.out.println("9. Display Indexed Tokens (Vocabulary and Total Tokens).");
+    System.out.println("10. Exit the Program.");
+    System.out.println("=========================");
+}
+
+public static void test() {
+    Driver driver = new Driver();
+    driver.loadFiles("C:\\Users\\khali\\OneDrive\\سطح المكتب\\CSC212 Project\\data\\data\\stop.txt", 
+                     "C:\\Users\\khali\\OneDrive\\سطح المكتب\\CSC212 Project\\data\\data\\dataset.csv");
+
+    Scanner scanner = new Scanner(System.in);
+    int userChoice;
+    do {
+    	displayMenu(); // Calls the menu display method
+        System.out.print("Please select an option: ");
+        userChoice = scanner.nextInt();
+        switch (userChoice) {
+            case 1:
+                System.out.print("Enter the term to search: ");
+                String term = scanner.next().toLowerCase().trim();
+
+                System.out.println("\nOption: Search using Index List");
+                LinkedList<Integer> results = Driver.indexs.get_doc_word(term);
+                System.out.print("Term Found: " + term + " -> ");
+                results.display();
+
+                System.out.println("\n-------------------------");
+                System.out.println("Option: Search using Inverted Index (List)");
+                if (driver.inverted.search_inverted(term)) {
+                    driver.inverted.inverted_index.retrieve().display();
+                } else {
+                    System.out.println("No matches found in inverted index.");
+                }
+
+                System.out.println("\nOption: Search using Inverted Index (BST)");
+                if (driver.invertedBST.Search_word_inverted(term)) {
+                    driver.inverted.inverted_index.retrieve().display();
+                } else {
+                    System.out.println("No matches found in BST.");
+                }
+                break;
+
+            case 2:
+                scanner.nextLine(); // Clears the input buffer
+                System.out.print("Enter a query for retrieval: ");
+                String query = scanner.nextLine().toLowerCase()
+                                     .replaceAll(" and ", " AND ")
+                                     .replaceAll(" or ", " OR ");
+
+                System.out.println("\nChoose the method for query processing:");
+                System.out.println("1. Index");
+                System.out.println("2. Inverted Index (List)");
+                System.out.println("3. BST");
+                System.out.println("4. Exit Query Menu");
+
+                int methodChoice;
+                do {
+                    methodChoice = scanner.nextInt();
+                    if (methodChoice == 1) {
+                        QueryProcessing_index process = new QueryProcessing_index(Driver.indexs);
+                        LinkedList<Integer> queryResults = QueryProcessing_index.MixedQuery(query);
+                        driver.display_doc(queryResults);
+                    } else if (methodChoice == 2) {
+                        QueryProcessing process = new QueryProcessing(driver.inverted);
+                        LinkedList<Integer> queryResults = QueryProcessing.MixedQuery(query);
+                        driver.display_doc(queryResults);
+                    } else if (methodChoice == 3) {
+                        QueryProcessing_BST process = new QueryProcessing_BST(driver.invertedBST);
+                        LinkedList<Integer> queryResults = QueryProcessing_BST.MixedQuery(query);
+                        driver.display_doc(queryResults);
+                    } else if (methodChoice != 4) {
+                        System.out.println("Invalid choice. Try again.");
+                    }
+                } while (methodChoice != 4);
+                break;
+
+            case 3:
+                scanner.nextLine(); // Clears the buffer
+                System.out.print("Enter a query for ranking: ");
+                String rankingQuery = scanner.nextLine().toLowerCase();
+                Ranking rankProcessor = new Ranking(driver.invertedBST, Driver.indexs, rankingQuery);
+                rankProcessor.insert_sorted_in_list();
+                rankProcessor.display_all_doc_with_score_usingList();
+                break;
+
+            case 4:
+                driver.indexs.display_document();
+                System.out.println("-------------------------");
+                break;
+
+            case 5:
+                System.out.println("Total Documents: " + Driver.indexs.All.n);
+                System.out.println("-------------------------");
+                break;
+
+            case 6:
+                System.out.println("Unique Words (Excluding Stop Words): " + driver.inverted.inverted_index.n);
+                System.out.println("-------------------------");
+                break;
+
+            case 7:
+                driver.inverted.inverted_display();
+                break;
+
+            case 8:
+                driver.invertedBST.display_inverted();
+                break;
+
+            case 9:
+                System.out.println("Token Count: " + driver.tokens);
+                System.out.println("Unique Words (Including Stop Words): " + driver.unique_words.n);
+                break;
+
+            case 10:
+                System.out.println("Thank you! Goodbye.");
+                break;
+
+            default:
+                System.out.println("Invalid choice. Please try again.");
+                break;
+        }
+    } while (userChoice != 10);
+}
 
 
 
