@@ -6,8 +6,7 @@ public Node<T>current;
   
 public LinkedList() {  
     head=current=null;
-    n=0;
-      
+    n=0;      
 }  
   
 public boolean empty() {  
@@ -67,8 +66,7 @@ public void remove () {
             tmp = tmp.next;  
 
         tmp.next = current.next;  
-    }  
-
+    } 
     if (current.next == null)  
         current = head;  
     else  
@@ -80,14 +78,10 @@ public void display( ) {  //extra
 	
 	 Node<T> p = head;
 	 while(p!=null) {
-		 System.out.print(p.data+" ");
-		 
-		  p= p.next;
-		 
+		 System.out.print(p.data+" "); 
+		  p= p.next;	 
 	 }
 	 System.out.println();
-	
-
 }
 
 public boolean exist(T x) {
@@ -96,18 +90,10 @@ public boolean exist(T x) {
 	 while(p!=null) {
 		 if (p.data.equals(x))
 			 return true;
-		 
-		  p= p.next;
-
-	 }
-		 
-	 
+		  p= p.next;}
+		 return false;
+     }	
 	
-	return false;
-}
-
-
- 	
 }
 
 
