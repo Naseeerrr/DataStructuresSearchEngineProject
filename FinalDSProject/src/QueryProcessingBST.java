@@ -1,9 +1,9 @@
 
-public class QueryProcessing_BST {
+public class QueryProcessingBST {
 	
 
     static InvertedBST inverted;
-    public QueryProcessing_BST(InvertedBST inverted){
+    public QueryProcessingBST(InvertedBST inverted){
     this.inverted=inverted;
     }
     public static LinkedList<Integer>BooleanQuery(String Query){

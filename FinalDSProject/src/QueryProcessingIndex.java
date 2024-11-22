@@ -3,10 +3,10 @@
  * @author hp
  *
  */
-public class QueryProcessing_index { // the same as Queryproceesin but the diff is the variables are different and search methods
+public class QueryProcessingIndex { // the same as Queryproceesin but the diff is the variables are different and search methods
 
     static Index indexs;
-    public QueryProcessing_index(Index indexs ){
+    public QueryProcessingIndex(Index indexs ){
     this.indexs=indexs;
     }
     public static LinkedList<Integer>BooleanQuery(String Query){

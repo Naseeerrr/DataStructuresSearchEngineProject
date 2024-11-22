@@ -1,17 +1,17 @@
-public class Ranking_BST {
+public class RankingBST {
 
     static String Query;
     static InvertedBST inverted;
     static Index index1;
     static LinkedList<Integer> all_doc_in_query;
-    static BST_int<Integer> DocIDs_withRank;  // adddd
+    static BSTInt<Integer> DocIDs_withRank;  // adddd
 
-    public Ranking_BST(InvertedBST inverted, Index index1, String Query) {
+    public RankingBST(InvertedBST inverted, Index index1, String Query) {
         this.inverted = inverted;
         this.index1 = index1;
         this.Query = Query;
         all_doc_in_query = new LinkedList<>();
-        DocIDs_withRank = new BST_int<>();
+        DocIDs_withRank = new BSTInt<>();
     }
 
     public static void insert_sorted_inBST() {

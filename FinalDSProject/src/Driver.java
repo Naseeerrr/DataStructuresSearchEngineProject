@@ -281,11 +281,10 @@ public static void test() {
 
 public static void main(String[] args) {
 		Driver d = new Driver ();
-		d.loadFiles("C:\\Users\\hp\\OneDrive\\Desktop\\KSU\\CS 212 Project\\stop.txt","C:\\Users\\hp\\OneDrive\\Desktop\\KSU\\CS 212 Project\\dataset.csv");
+		d.loadFiles("stop.txt","dataset.csv");
 			//d.indexs.display_document();
 			System.out.println(" number of tokens =:" + d.tokens);
 			System.out.println(" number of unique words =:" + d.num_unique);
-			d.unique_words.display();
 
 	//d.inverted.inverted_display();
 		
@@ -305,11 +304,10 @@ public static void main(String[] args) {
 								//////// INDEX
 	QueryProcessingIndex ind= new QueryProcessingIndex(d.indexs);
 	LinkedList<Integer>  res1=QueryProcessingIndex.BooleanQuery("marketANDsports") ;
-	d.display_doc(res1);
 
 	
 	
-		
+		test();
 	
 		
 		
