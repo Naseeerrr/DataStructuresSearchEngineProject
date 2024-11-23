@@ -148,8 +148,8 @@ public static void displayMenu() {
 
 public static void test() {
     Handler Handler = new Handler();
-    Handler.loadFiles("C:\\Users\\khali\\OneDrive\\سطح المكتب\\CSC212 Project\\data\\data\\stop.txt", 
-                     "C:\\Users\\khali\\OneDrive\\سطح المكتب\\CSC212 Project\\data\\data\\dataset.csv");
+    Handler.loadFiles("stop.txt", 
+                     "dataset.csv");
 
     Scanner scanner = new Scanner(System.in);
     int userChoice;
@@ -272,6 +272,7 @@ public static void main(String[] args) {
 	                //test:
 			System.out.println(" number of tokens =:" + d.tokens);
 			System.out.println(" number of unique words =:" + d.num_unique);		
+      test();
 	}
 }
 

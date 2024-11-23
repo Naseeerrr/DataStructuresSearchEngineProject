@@ -5,9 +5,9 @@
  */
 public class QueryProcessingIndex { // the same as Queryproceesin but the diff is the variables are different and search methods
 
-    static Index indexs;
-    public QueryProcessingIndex(Index indexs ){
-    this.indexs=indexs;
+    static Index indexx;
+    public QueryProcessingIndex(Index indexx ){
+    this.indexx=indexx;
     }
     public static LinkedList<Integer>BooleanQuery(String Query){
     
@@ -40,11 +40,11 @@ public class QueryProcessingIndex { // the same as Queryproceesin but the diff i
     String terms[]=Query.split("AND");   
     if(terms.length==0) return A;   
     
-    A=indexs.get_doc_word(terms[0].trim().toLowerCase()); // diff than Qprocessing (inverted)
+    A=indexx.get_doc_word(terms[0].trim().toLowerCase()); // diff than Qprocessing (inverted)
        
    for(int i=1;i<terms.length;i++)
    {      
-       B=indexs.get_doc_word(terms[i].trim().toLowerCase());
+       B=indexx.get_doc_word(terms[i].trim().toLowerCase());
        
        A=AndQuery(A, B);
       
@@ -96,10 +96,10 @@ public class QueryProcessingIndex { // the same as Queryproceesin but the diff i
     // ترجع قيمة الليست اللي مرتبطة بهذه الكلمة
     
     //هنا دالة البحث وضعت المؤشر عند الكلمة المطلوبة إذا كانت موجودة
-    A=indexs.get_doc_word(terms[0].trim().toLowerCase());
+    A=indexx.get_doc_word(terms[0].trim().toLowerCase());
        
    for(int i=1;i<terms.length;i++) {    
-       B=indexs.get_doc_word(terms[i].trim().toLowerCase());
+       B=indexx.get_doc_word(terms[i].trim().toLowerCase());
        
        A=AndQuery(A, B);
       
@@ -146,7 +146,7 @@ public class QueryProcessingIndex { // the same as Queryproceesin but the diff i
     LinkedList<Integer> B=new LinkedList<Integer>(); 
     if(Query.length()==0) return A;    
     String term=Query.replaceFirst("NOT","").trim().toLowerCase();	
-     A=indexs.get_doc_word(term);
+     A=indexx.get_doc_word(term);
        
        if(ind1.All.empty()) return A;
        

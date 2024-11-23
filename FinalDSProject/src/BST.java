@@ -1,4 +1,18 @@
-public class BST<T> {  
+class BSTNode<T>{
+    public String key;  
+        public T data;  
+        public BSTNode<T> left,right;  
+      
+       
+        public BSTNode(String k,T val) {  
+            key=k;  
+            data=val;  
+            left=right=null;  
+        }  
+     
+     }  
+        
+     public class BST<T> {  
          BSTNode<T> root, current;  
                
              
@@ -73,6 +87,7 @@ public class BST<T> {
     }
     
     
+    
     public void inOrder() { // to print BSt in order
         if (root==null)
             System.out.println("Empty tree");
@@ -84,10 +99,17 @@ public class BST<T> {
             return;
         
         inOrder(p.left); // left side
-        System.out.println("key = " + p.key); // processing
-        System.out.println("words: "+p.data);
-        //((Words)p.data).display();// change to linked list (cast) after test!!!
+        //System.out.println("key = " + p.key); // processing
+        //System.out.println("words: "+p.data);
+        ((Words)p.data).display();// change to linked list (cast) after test!!!
         inOrder(p.right); // for right
-        }          
-}  
+        
+        
     
+        
+    
+        
+    }
+             
+            
+         }
