@@ -24,13 +24,13 @@ public class RankingBST {
         all_doc_in_query.findFirst();
         while (!all_doc_in_query.last()) {
             Document d = get_doc_given_id(all_doc_in_query.retrieve());
-            int Rank = get_doc_rank_score(d, Query);
+            int Rank = get_DocumentRank_score(d, Query);
             DocIDs_withRank.insert(Rank, all_doc_in_query.retrieve());
             all_doc_in_query.findNext();
         }
 
         Document d = get_doc_given_id(all_doc_in_query.retrieve());
-        int Rank = get_doc_rank_score(d, Query);
+        int Rank = get_DocumentRank_score(d, Query);
         DocIDs_withRank.insert(Rank, all_doc_in_query.retrieve());
     }
 
@@ -59,7 +59,7 @@ public class RankingBST {
         return freq;
     }
 
-    public static int get_doc_rank_score(Document d, String Query) {
+    public static int get_DocumentRank_score(Document d, String Query) {
         if (Query.length() == 0) return 0;
         String[] terms = Query.split(" ");
         int sum_freq = 0;
