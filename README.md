@@ -37,25 +37,6 @@ Core Classes
 	8.	InvertedBST
 	•	Stores and retrieves keywords and document IDs using a BST.
 
-How to Run
-
-	1.	Clone the Repository:
-
-git clone <repo-url>
-cd <repo-name>
-
-
-	2.	Compile the Code:
-Use any Java compiler. For example:
-
-javac *.java
-
-
-	3.	Run the Main Class:
-Run the Handler or Main class to load documents and perform queries:
-
-java Handler
-
 Usage
 
 Menu Options
