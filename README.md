@@ -41,25 +41,28 @@ Usage
 
 Menu Options
 
-When the program is run, the following menu options will be displayed:
-	1.	Retrieve Terms
-	•	Search for terms using different indexing methods:
-	•	Index with lists.
-	•	Inverted index with lists.
-	•	Inverted index with BST.
-	2.	Perform Boolean Retrieval
-	•	Execute Boolean queries such as:
-	•	AND queries.
-	•	OR queries.
-	•	NOT queries.
-	3.	Perform Ranked Retrieval
-	•	Retrieve and rank documents based on query terms:
-	•	Using Linked Lists.
-	•	Using Binary Search Trees (BST).
-	4.	Display All Indexed Documents and Terms
-	•	View all the documents and their associated terms stored in the index.
-	5.	View Document Ranking Scores
-	•	Display the ranking scores for documents retrieved by a query, sorted in descending order.
+1. **Retrieve Terms**  
+   - Search for terms using different indexing methods:
+     - Index with lists.
+     - Inverted index with lists.
+     - Inverted index with BST.
+
+2. **Perform Boolean Retrieval**  
+   - Execute Boolean queries such as:
+     - AND queries.
+     - OR queries.
+     - NOT queries.
+
+3. **Perform Ranked Retrieval**  
+   - Retrieve and rank documents based on query terms:
+     - Using Linked Lists.
+     - Using Binary Search Trees (BST).
+
+4. **Display All Indexed Documents and Terms**  
+   - View all the documents and their associated terms stored in the index.
+
+5. **View Document Ranking Scores**  
+   - Display the ranking scores for documents retrieved by a query, sorted in descending order.
 
 Dependencies
 
