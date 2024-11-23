@@ -3,10 +3,10 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 
-public class Driver { // real work is here تنقية 
+public class Handler { // real work is here تنقية 
 	
 LinkedList<String> stops;
-static Index indexs;
+static Index indexx;
 InvertedIndex inverted;
 InvertedBST invertedBST;
 int tokens=0; // number of words ,spaces....
@@ -15,9 +15,9 @@ int num_unique=0; // how many unique word in the document
 
 
 
-public Driver() {
+public Handler() {
   stops=new LinkedList<>();
-  indexs = new Index();
+  indexx = new Index();
   inverted= new InvertedIndex();
   invertedBST= new InvertedBST();
   
@@ -51,7 +51,7 @@ public void Load_doc(String fileN) {
     int id=Integer.parseInt(takeID.trim());
     String content=line.substring(line.indexOf(",")+1).trim();
     LinkedList<String>WordsDoc= LL_index_inverted(content,id);
-    indexs.add_document(new Document(id,WordsDoc,content)); // adding as index
+    indexx.add_document(new Document(id,WordsDoc,content)); // adding as index
     
   }
   }catch(Exception e) {
@@ -114,13 +114,13 @@ public void display_doc (LinkedList<Integer> IDs){ // display Document by group 
 	IDs.findFirst();
 	
 	while(!IDs.last()) {
-		Document d =indexs.get_doc(IDs.retrieve());
+		Document d =indexx.get_doc(IDs.retrieve());
 		 if(d!=null) {// id found
 			 System.out.println("Document  "+ d.id + ": " +d.content);	 
 		 }
 		 IDs.findNext();
 	}
-	Document d =indexs.get_doc(IDs.retrieve());
+	Document d =indexx.get_doc(IDs.retrieve());
 	 if(d!=null) {// id found
 		 System.out.println("Document  "+ d.id + ": " +d.content);		 
 	 }
@@ -147,8 +147,8 @@ public static void displayMenu() {
 }
 
 public static void test() {
-    Driver driver = new Driver();
-    driver.loadFiles("C:\\Users\\khali\\OneDrive\\سطح المكتب\\CSC212 Project\\data\\data\\stop.txt", 
+    Handler Handler = new Handler();
+    Handler.loadFiles("C:\\Users\\khali\\OneDrive\\سطح المكتب\\CSC212 Project\\data\\data\\stop.txt", 
                      "C:\\Users\\khali\\OneDrive\\سطح المكتب\\CSC212 Project\\data\\data\\dataset.csv");
 
     Scanner scanner = new Scanner(System.in);
@@ -163,21 +163,21 @@ public static void test() {
                 String term = scanner.next().toLowerCase().trim();
 
                 System.out.println("\nOption: Search using Index List");
-                LinkedList<Integer> results = Driver.indexs.get_doc_word(term);
+                LinkedList<Integer> results = Handler.indexx.get_doc_word(term);
                 System.out.print("Term Found: " + term + " -> ");
                 results.display();
 
                 System.out.println("\n-------------------------");
                 System.out.println("Option: Search using Inverted Index (List)");
-                if (driver.inverted.search_inverted(term)) {
-                    driver.inverted.inverted_index.retrieve().display();
+                if (Handler.inverted.search_inverted(term)) {
+                    Handler.inverted.inverted_index.retrieve().display();
                 } else {
                     System.out.println("No matches found in inverted index.");
                 }
 
                 System.out.println("\nOption: Search using Inverted Index (BST)");
-                if (driver.invertedBST.Search_word_inverted(term)) {
-                    driver.inverted.inverted_index.retrieve().display();
+                if (Handler.invertedBST.Search_word_inverted(term)) {
+                    Handler.inverted.inverted_index.retrieve().display();
                 } else {
                     System.out.println("No matches found in BST.");
                 }
@@ -200,17 +200,17 @@ public static void test() {
                 do {
                     methodChoice = scanner.nextInt();
                     if (methodChoice == 1) {
-                        QueryProcessingIndex process = new QueryProcessingIndex(Driver.indexs);
+                        QueryProcessingIndex process = new QueryProcessingIndex(Handler.indexx);
                         LinkedList<Integer> queryResults = QueryProcessingIndex.MixedQuery(query);
-                        driver.display_doc(queryResults);
+                        Handler.display_doc(queryResults);
                     } else if (methodChoice == 2) {
-                        QueryProcessing process = new QueryProcessing(driver.inverted);
+                        QueryProcessing process = new QueryProcessing(Handler.inverted);
                         LinkedList<Integer> queryResults = QueryProcessing.MixedQuery(query);
-                        driver.display_doc(queryResults);
+                        Handler.display_doc(queryResults);
                     } else if (methodChoice == 3) {
-                        QueryProcessingBST process = new QueryProcessingBST(driver.invertedBST);
+                        QueryProcessingBST process = new QueryProcessingBST(Handler.invertedBST);
                         LinkedList<Integer> queryResults = QueryProcessingBST.MixedQuery(query);
-                        driver.display_doc(queryResults);
+                        Handler.display_doc(queryResults);
                     } else if (methodChoice != 4) {
                         System.out.println("Invalid choice. Try again.");
                     }
@@ -221,37 +221,37 @@ public static void test() {
                 scanner.nextLine(); // Clears the buffer
                 System.out.print("Enter a query for ranking: ");
                 String rankingQuery = scanner.nextLine().toLowerCase();
-                Ranking rankProcessor = new Ranking(driver.invertedBST, Driver.indexs, rankingQuery);
+                Ranking rankProcessor = new Ranking(Handler.invertedBST, Handler.indexx, rankingQuery);
                 rankProcessor.insert_sorted_in_list();
                 rankProcessor.display_all_doc_with_score_usingList();
                 break;
 
             case 4:
-                driver.indexs.display_document();
+                Handler.indexx.display_document();
                 System.out.println("-------------------------");
                 break;
 
             case 5:
-                System.out.println("Total Documents: " + Driver.indexs.All.n);
+                System.out.println("Total Documents: " + Handler.indexx.All.n);
                 System.out.println("-------------------------");
                 break;
 
             case 6:
-                System.out.println("Unique Words (Excluding Stop Words): " + driver.inverted.inverted_index.n);
+                System.out.println("Unique Words (Excluding Stop Words): " + Handler.inverted.inverted_index.n);
                 System.out.println("-------------------------");
                 break;
 
             case 7:
-                driver.inverted.inverted_display();
+                Handler.inverted.inverted_display();
                 break;
 
             case 8:
-                driver.invertedBST.display_inverted();
+                Handler.invertedBST.display_inverted();
                 break;
 
             case 9:
-                System.out.println("Token Count: " + driver.tokens);
-                System.out.println("Unique Words (Including Stop Words): " + driver.unique_words.n);
+                System.out.println("Token Count: " + Handler.tokens);
+                System.out.println("Unique Words (Including Stop Words): " + Handler.unique_words.n);
                 break;
 
             case 10:
@@ -266,9 +266,9 @@ public static void test() {
 }
 
 public static void main(String[] args) {
-		Driver d = new Driver ();
+		Handler d = new Handler ();
 		d.loadFiles("stop.txt","dataset.csv");
-			//d.indexs.display_document();
+			//d.indexx.display_document();
 	                //test:
 			System.out.println(" number of tokens =:" + d.tokens);
 			System.out.println(" number of unique words =:" + d.num_unique);		
