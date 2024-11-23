@@ -19,7 +19,7 @@ This repository implements a ranking system for documents using inverted indexes
   - Outputs ranked documents with their scores in descending order.
 
 ---
---
+
 ## **Core Classes**
 
 1. **Document**  
